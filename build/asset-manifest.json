@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8c83721c.css",
+    "main.js": "/static/js/main.edcf2c99.js",
+    "static/media/download.jpg": "/static/media/download.de9ca52a6faf932ee205.jpg",
+    "static/media/tech.gif": "/static/media/tech.64bde2b1d396f77ca448.gif",
+    "static/media/tech.webp": "/static/media/tech.fa00db30699aece78a9c.webp",
+    "static/media/images.png": "/static/media/images.086c44b7f29040b4fa65.png",
+    "static/media/passport.jpg": "/static/media/passport.c805b6222bf3b81a576e.jpg",
+    "index.html": "/index.html",
+    "main.8c83721c.css.map": "/static/css/main.8c83721c.css.map",
+    "main.edcf2c99.js.map": "/static/js/main.edcf2c99.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8c83721c.css",
+    "static/js/main.edcf2c99.js"
+  ]
+}
