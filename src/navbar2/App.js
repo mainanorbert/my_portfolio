@@ -13,7 +13,7 @@ import Add from './forms/Add';
 import Settings from './settings/Settings';
 import Register from './users/Register';
 import Login from './users/Login';
-import { Route,Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Footer from './main/Footer.js';
 // import {Switch} from 'react-router-dom'
 
@@ -37,41 +37,39 @@ const App = () => {
     // }
 
 
-const user=true
+    const user = true
 
-   
+
     return (
 
         <>
-        
-
-           <div className='sticky w-full top-0 z-10'><Navbar/> </div>
-      
-        <Routes className="z-0">
-        <Route path='/' element={<Home/>} />
-        <Route path='/articles' element={<Post/>} />
-        <Route path='/' element={<Home/>} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/add/article' element={user?<Add/>:<Register/>} />
-        <Route path='/register' element={user? <Home/>:<Register/>} />
-        <Route path='/login' element={user?<Home/>:<Login/>} />
-        <Route path='/post' element={<Post/>} />
-        <Route path='/settings' element={<Settings/>} />
-        <Route path='/profile' element={<Post/>} />      
-        
-
-        </Routes>
 
 
-        <div>
-        <Footer/>
-        </div>
+            <div className='sticky w-full top-0 z-10'><Navbar /> </div>
 
-       
-        
+            <Routes className="z-0">
+                <Route path='/' element={<Home />} />
+                <Route path='/articles' element={<Post />} />
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/add/article' element={user ? <Add /> : <Register />} />
+                <Route path='/register' element={user ? <Home /> : <Register />} />
+                <Route path='/login' element={user ? <Home /> : <Login />} />
+                <Route path='/post' element={<Post />} />
+                <Route path='/settings' element={<Settings />} />
+                <Route path='/profile' element={<Post />} />
+            </Routes>
+
+
+            <div>
+                <Footer />
+            </div>
+
+
+
         </>
-  
+
     )
 }
 // <Button btnClick={()=>setHide(!hide)} />

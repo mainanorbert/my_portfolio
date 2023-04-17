@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import App2 from './states-random/App2';
 // import Navbar from './navbar/Navbar';
 import App from './navbar2/App';
-import States from './states/States';
+// import States from './states/States';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
