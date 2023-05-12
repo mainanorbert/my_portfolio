@@ -15,6 +15,7 @@ import Register from './users/Register';
 import Login from './users/Login';
 import { Route, Routes } from 'react-router-dom';
 import Footer from './main/Footer.js';
+import Quote from './others/Quote';
 // import {Switch} from 'react-router-dom'
 
 const App = () => {
@@ -59,6 +60,7 @@ const App = () => {
                 <Route path='/post' element={<Post />} />
                 <Route path='/settings' element={<Settings />} />
                 <Route path='/profile' element={<Post />} />
+                <Route path='/quotes' element={<Quote/>}></Route>
             </Routes>
 
 
