@@ -6,16 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faWhatsapp, faIma } from '@fortawesome/free-brands-svg-icons';
 import { useAuthContext } from '../../context/ContextProvider'
 import tech from '../images/tech.gif'
-import axiosClient from '../../axios/AxiosClient'
-import { useLocation, useNavigate } from 'react-router-dom';
+import axiosClient from '../../axios/AxiosClient';
 
 const Add = () => {
-    const navigate = useLocation()
-    const { userId } = useAuthContext()
+    const { userId, editPost } = useAuthContext()
     const [files, setFiles] = useState(0)
     const [payload, setPayload] = useState({
-        title: '',
-        article: '',
+        title: editPost.data.title,
+        article: editPost.data.article,
+        post_id:editPost.data.id,
         user_id: userId
     })
     const [error, setError] = useState('')
@@ -35,17 +34,17 @@ const Add = () => {
         }
 
         console.log(payload)
-        axiosClient.post('add/article', payload)
+        axiosClient.post('edit/article/', payload)
             .then((response) => {
-                console.log('lff:',response)
-                setError("You have successfully submitted an article")
+                console.log('lffdddddd:',response)
+                setError("You have successfully Edited an article")
                 setIsError(true)
                 setPayload({
                     title: '',
                     article: '',
+                    post_id: editPost.data.id,
                     user_id:userId
                 });
-                navigate('/add/article')
 
             })
             .catch(({ error }) => {
@@ -70,12 +69,12 @@ const Add = () => {
             [name]: value,
         }));
     };
-
+console.log('eed',editPost.data.id)
 
     return (
         <div className='flex gap-7  bg-slate-300'>
-            <div className='w-4/12 md:block hidden bg-slate-300 overflow-auto'> <Sidebar /></div>
-            <div className='w-full h-scre bg-slate-400 p-3'>
+            <div className='w-4/12 md:block hidden'> <Sidebar /></div>
+            <div className='w-full'>
                 <p className='text-center md:text-2xl font-extrabold text-neutral-600'>Publish New Article</p>
                 <div><img src={tech} className="w-[10rem] h-[6rem]" alt="" /></div>
                 <form className='  place-items-center relative  ' onSubmit={handleSubmit}>
@@ -94,7 +93,7 @@ const Add = () => {
                                     name='title'
                                     value={payload.title}
                                     onChange={handleInputChange}
-                                    className='w-full bg-slate-200 border focus:outline-none focus:border-none font-bold h-10 rounded-xl px-2' name='title' placeholder='Title...' type="text" />
+                                    className='w-full bg-transparent border focus:outline-none focus:border-none font-bold h-10 rounded-xl px-2' name='title' placeholder='Title...' type="text" />
                                 <label htmlFor='image' className='ml-2 text-4xl cursor-pointer text-blue-700' title='Upload FrontLine Image'>
                                     <i class="fas fa-upload" ></i>
                                     <i class="fas fa-image"></i>
@@ -103,7 +102,7 @@ const Add = () => {
                                 <input type="file" id='image' name='image' className='hidden' onChange={handleChange} />
                             </div>
                         </div>
-                        <textarea className='w-full p-2 border W rounded bg-slate-200 '
+                        <textarea className='w-full p-2 border W rounded bg-transparent '
                             name='article'
                             value={payload.article}
                             onChange={handleInputChange}
@@ -111,7 +110,7 @@ const Add = () => {
 
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button className='w-6/12 p-1 h-10 font-bold text-neutral-300 bg-green-400 hover:bg-green-500 rounded'>Post</button>
+                        <button className='w-6/12 p-1 h-10 font-bold text-neutral-300 bg-green-400 hover:bg-green-500 rounded'>Update</button>
                     </div>
                 </form>
             </div>

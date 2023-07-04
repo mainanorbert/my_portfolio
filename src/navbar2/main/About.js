@@ -6,10 +6,10 @@ import Categories from '../pages/Categories'
 const About = () => {
   return (
     <div className='md:flex block w-full h-screen '>
-      <div className='md:w-4/12  overflow-y-auto'>
+      <div className='md:w-3/12 bg-slate-300  overflow-y-auto'>
         <Sidebar />
       </div>
-      <div className='md:w-6/12 '>
+      <div className='md:w-6/12 px-4 '>
       <div className='md:w-10/12 bg-slate-300  mr-[rem] mt-1.5'>
         <div className='p-2'>
           <div className='text-center text-green-700 font-semibold'>About NoberTechx</div>

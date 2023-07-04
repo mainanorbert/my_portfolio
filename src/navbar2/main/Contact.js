@@ -6,13 +6,13 @@ import { faDown } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = () => {
   return (
-    <div className=' flex w-full'>
+    <div className=' md:flex grid w-full'>
 
-      <div className='w-4/12'>
+      <div className='md:w-4/12 md:overflow-auto bg-slate-300'>
         <Sidebar />
       </div>
 
-      <div className='w-6/12 bg-slate-300 m-2 ml-1 relative'>   
+      <div className='md:w-8/12 bg-slate-300 m-2 ml-1 relative'>   
 
         <form className=' w-full grid  p-2 '>
 
