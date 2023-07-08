@@ -5,8 +5,8 @@ const Categories = () => {
     return (
 
         <div className=''>
-            <div className='text-xl font-bold text-center bg-green-300 py-4 my-4 hover:bg-green-400 hover:text-white rounded-full'>
-            <Link to='/quotes' className=' md:text-left text-center md:text-xl text-yellow-500 text-3xl pl-2'>Today's Quote</Link>
+            <div className='text-xl font-bold text-center bg-green-400 py-4 my-4 hover:bg-green-500 hover:text-white rounded-full'>
+            <Link to='/quotes' className=' md:text-left text-center md:text-xl text-white text-2xl pl-2'>Today's Quote</Link>
              </div>
 
             <div className='text-center  font-bold text-2xl'>Filters</div>
@@ -14,9 +14,8 @@ const Categories = () => {
                 <p className='text-green-700 font-bold'>Chose Your Category</p>
                 <li className='text-sm'><a href="">Artificial Intelligence</a></li>
                 <li className='text-sm'><a href="">Web Development</a></li>
-                <li className='text-sm'><a href="">Technology-Entreprenuer</a></li>
-                <li className='text-sm'><a href="">Artificial Articles</a></li>
-                <li className='text-sm'><a href="">Tech Motivational Articles</a></li>
+                <li className='text-sm'><a href="">Cyber Security</a></li>
+                <li className='text-sm'><a href="">Software Engineering</a></li>
             </ul>
         </div>
     )

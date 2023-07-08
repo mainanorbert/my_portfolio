@@ -82,13 +82,13 @@ const Navbar = () => {
   
   return (
     <div className='w-full md:text-center relative bg-red-800 '>
-      <button onClick={showNav} className='absolute top-2 md:hidden p- text-white font-extrabold text-3xl left-4'>{!isOpen ? <FaBars /> : <FaTimes />}</button>
+      <button onClick={showNav} className='absolute md:top-2 md:hidden p- text-white font-extrabold text-3xl left-4'>{!isOpen ? <FaBars /> : <FaTimes />}</button>
 
       <nav className='md:flex block gap-2  items-center text-neutral-400 font-bold justify-between  bg-slate-800 '>
         <div className=' pl-[4rem] md:pl-0'>
-          <Link to='/' className=' md:text-left text-cente md:text-xl   p-3 text-yellow-500 text-3xl pl-2'>NoberTechx</Link>
+          <Link to='/' className=' md:text-left text-cente md:text-xl   p-3 text-yellow-500 text-2xl pl-2'>NoberTechx</Link>
         </div>
-        <div ref={navRef} className='md:flex translate-y-0 transition-transform hidden md:opacity-100 opacity-0.2  duration-1000  gap-2 md:h-[6rem] items-center text-neutral-400 font-bold justify-between  bg-slate-800'>
+        <div ref={navRef} className='md:flex translate-y-0 p-3 transition-transform hidden md:opacity-100 opacity-0.2  duration-1000  gap-2 items-center text-neutral-400 font-bold justify-between  bg-slate-800'>
           <div className='basis-1/3 w-full md:flex gap-3 grid place-items-start justify-between hover:text-neutral-200 hover:underline px-2 text-center'>
             <Link to="/" className={`${activeLink === '/' ? 'text-yellow-300 underline' : ''}`} onClick={() => setActiveLink('/')}>Home</Link>
             <Link to="/articles" className={`${activeLink === '/articles' ? 'text-yellow-300 underline' : ''}`}>Articles</Link>
@@ -97,18 +97,18 @@ const Navbar = () => {
           </div>
 
           <div className='md:flex justify-between  w-full gap-2'>
-            <div className='basis-1/4 md:flex justify-center gap-4 space-x-2'>
-              <Link to="https://web.facebook.com/?_rdc=1&_rdr" target={'_blank'}  ><FontAwesomeIcon className='md:h-10 text-blue-500' icon={faFacebook} /></Link>
-              <Link to="https://web.whatsapp.com/" target={'_blank'} ><FontAwesomeIcon className='md:h-10  text-green-500' icon={faWhatsapp} /></Link>
-              <Link to="https://www.instagram.com/" target={'_blank'}  ><FontAwesomeIcon className='md:h-10 text-slate-400' icon={faInstagram} /></Link>
+            <div className='basis-1/ md:flex justify-center gap-4 space-x-2'>
+              <Link to="https://web.facebook.com/?_rdc=1&_rdr" target={'_blank'}  ><FontAwesomeIcon className='md:h-5 text-blue-500' icon={faFacebook} /></Link>
+              <Link to="https://web.whatsapp.com/" target={'_blank'} ><FontAwesomeIcon className='md:h-5  text-green-500' icon={faWhatsapp} /></Link>
+              <Link to="https://www.instagram.com/" target={'_blank'}  ><FontAwesomeIcon className='md:h-5 text-slate-400' icon={faInstagram} /></Link>
             </div>
 
             <div className='font-bold'>
-              {(<Link to="/add/article" className={`${activeLink === '/add/article' ? 'text-yellow-300 underline' : ''}`}>Add Article <span className='font-bold text-xl'>
+              {(<Link to="/add/article" className={`${activeLink === '/add/article' ? 'text-yellow-300 underline' : 'hover:text-neutral-300 hover:underline'}`}>Add Article <span className='font-bold text-xl'>
                 <i class="fas fa-plus"></i></span></Link>)}
             </div>
             <div className='w-full flex md:justify-center gap-1 basis-1/2'>
-              <input className='bg-transparent border-2 border-slate-500 rounded md:h-6  md:w-8/12 w-4/12' type="text" />
+              <input className='bg-transparent border-2 border-slate-500 rounded md:h-6  md:w-8/12 w-/12' type="text" />
               <a href=""><FontAwesomeIcon className=' h-6 text-slate-400' icon={faSearch} /></a>
             </div>
           </div>

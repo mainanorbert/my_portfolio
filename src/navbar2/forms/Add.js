@@ -13,13 +13,23 @@ const Add = () => {
     const navigate = useLocation()
     const { userId } = useAuthContext()
     const [files, setFiles] = useState(0)
+    const [error, setError] = useState('')
+    const [isError, setIsError] = useState(false)
+
     const [payload, setPayload] = useState({
         title: '',
         article: '',
+        category: '',
         user_id: userId
     })
-    const [error, setError] = useState('')
-    const [isError, setIsError] = useState(false)
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+       
+        setPayload((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
 
     const handleChange = (e) => {
 
@@ -28,22 +38,23 @@ const Add = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (payload.title === '' || payload.article === '') {
+        if (payload.title === '' || payload.article === '', payload.category === '') {
             setError('Fill all fields. Cannot Submit empty fields')
             setIsError(true)
 
         }
 
-        console.log(payload)
+        console.log('payload:', userId)
         axiosClient.post('add/article', payload)
             .then((response) => {
-                console.log('lff:',response)
+                console.log('lff:', response)
                 setError("You have successfully submitted an article")
                 setIsError(true)
                 setPayload({
                     title: '',
                     article: '',
-                    user_id:userId
+                    category: '',
+                    user_id: userId
                 });
                 navigate('/add/article')
 
@@ -63,13 +74,7 @@ const Add = () => {
         }
     }, [isError])
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setPayload((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    };
+
 
 
     return (
@@ -77,8 +82,7 @@ const Add = () => {
             <div className='w-4/12 md:block hidden bg-slate-300 overflow-auto'> <Sidebar /></div>
             <div className='w-full h-scre bg-slate-400 p-3'>
                 <p className='text-center md:text-2xl font-extrabold text-neutral-600'>Publish New Article</p>
-                <div><img src={tech} className="w-[10rem] h-[6rem]" alt="" /></div>
-                <form className='  place-items-center relative  ' onSubmit={handleSubmit}>
+                <form className='  place-items-center relative bg-green-400 p-4' onSubmit={handleSubmit}>
                     {isError && (<motion.div
                         animate={{
                             scale: [1, 2, 2, 1, 1],
@@ -86,32 +90,51 @@ const Add = () => {
                             borderRadius: ["20%", "20%", "50%", "50%", "20%"],
                         }}
                         className='absolute bg-red-600 p-1 w-6/12 rounded text-center text-white'>{error}</motion.div>)}
-                    <div className=" place-items-center md:w-10/12">
-                        <div className='my-1 w-full'>
-                            <label className='text-2xl font-semibold text-green-600'>Title</label>
-                            <div className='flex justify-center items-center'>
+                    <div className='w-10/12'>
+                        <div className='justify-center items-center px-8 space--1'>
+                            <div className='flex justify-between'>
+                                <label className='text-2xl font-semibold text-neutral-300'>Title</label>
+                                <label className='text-neutral-300 font-bold'>Choose Category</label>
+                            </div>
+                            <div className='flex space-x-1'>
                                 <input
                                     name='title'
                                     value={payload.title}
                                     onChange={handleInputChange}
                                     className='w-full bg-slate-200 border focus:outline-none focus:border-none font-bold h-10 rounded-xl px-2' name='title' placeholder='Title...' type="text" />
-                                <label htmlFor='image' className='ml-2 text-4xl cursor-pointer text-blue-700' title='Upload FrontLine Image'>
-                                    <i class="fas fa-upload" ></i>
-                                    <i class="fas fa-image"></i>
-                                </label>
-                                <span className='text-xs text-neutral-400'>({files})photo</span>
-                                <input type="file" id='image' name='image' className='hidden' onChange={handleChange} />
+
+                                <select defaultValue={payload.category} onChange={handleInputChange} name='category'
+                                    className='focus:outline-none rounded-xl w-4/12'
+                                >
+                                    <option value="">Select Category</option>
+                                    <option value="Artificial Intelligence" >Artificial Intelligence</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Computer Science">Cyber Security</option>
+                                    <option value="Software Engineering">Software Engineering</option>
+                                </select>
                             </div>
                         </div>
-                        <textarea className='w-full p-2 border W rounded bg-slate-200 '
-                            name='article'
-                            value={payload.article}
-                            onChange={handleInputChange}
-                            type="text" cols="10" rows="15" placeholder='Type Your Article Here...'></textarea>
+                        <div className='hidden'>
+                            <label htmlFor='image' className='ml-2 text-4xl cursor-pointer text-blue-700' title='Upload FrontLine Image'>
+                                <i class="fas fa-upload" ></i>
+                                <i class="fas fa-image"></i>
+                            </label>
+                            <span className='text-xs text-neutral-400'>({files})photo</span>
+                            <input type="file" id='image' name='image' className='hidden' onChange={handleChange} />
+                        </div>
 
-                    </div>
-                    <div className='flex justify-center w-full'>
-                        <button className='w-6/12 p-1 h-10 font-bold text-neutral-300 bg-green-400 hover:bg-green-500 rounded'>Post</button>
+                        <div className='px-8 mt-2'>
+                            <textarea className='w-full p-2 border W rounded bg-slate-200 '
+                                name='article'
+                                value={payload.article}
+                                onChange={handleInputChange}
+                                type="text" cols="10" rows="15" placeholder='Type Your Article Here...'></textarea>
+                        </div>
+
+
+                        <div className='flex justify-center w-full'>
+                            <button className='w-6/12 p-1 h-10 font-bold text-neutral-300 bg-green-400 hover:bg-green-500 rounded'>Post</button>
+                        </div>
                     </div>
                 </form>
             </div>

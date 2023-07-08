@@ -45,7 +45,7 @@ const Post = ({ post, author }) => {
             })
     }
 
-    
+
     //     const payload = {
     //         user_id: post.user_id
     //     }
@@ -60,9 +60,9 @@ const Post = ({ post, author }) => {
 
     // console.log('ui', post.user_id)
 
-  
-       
-   
+
+
+
 
     return (
 
@@ -73,9 +73,11 @@ const Post = ({ post, author }) => {
             </div>
             <div className=' w-10/12'>
                 <div className='bg-green-500 hover:bg-green-600 cursor-pointer hover:text-neutral-300 text-xs rounded p-1  inline-block'>
-                <i className='text-sm'>Created on:</i> {postCreated} | <i className='underline '>Author:</i> {author} </div>
+                    <i className='text-sm'>Created on:</i> {postCreated} | <span>Category:{post.category}</span> | <i className='underline '>Author:</i> {author} </div>
             </div>
-            <pre className='text- bg-green-300 p-1 w-full'>{post.article}</pre>
+            <div className=' max-w-10xl bg-blue-500'>
+                <pre><p className='p-1 bg-green-700 '>{post.article}</p></pre>
+            </div>
 
             <div className='flex justify-end space-x-2'>
                 <button className='flex' title="Edit this article" onClick={handleEdit}>

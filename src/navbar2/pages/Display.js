@@ -22,14 +22,15 @@ const Display=()=> {
    
     transition={{duration:1}}
     whileHover={{scale:1.05}}
-     className=' md:w-10/12 md:mr-[rem] h-[35rem] justify-center object-cover' src={passport} alt="" />
+     className=' md:w-10/12 w-11/12 md:mr-[rem] h-[35rem] justify-center object-cover'
+     src={passport} alt="" />
     
     <p className='absolute md:text-3xl text-xl w-full text-center text-neutral-200 font-bold'>
     <Typewriter
     options={{
       strings: [
         "NoberTechx Hub",
-        "Get Latest Article on Technology",
+        "Get Latest Articles on Technology",
         "We are here to motivate upcoming Techies"
     ],
       autoStart:true,

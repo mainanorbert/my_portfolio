@@ -13,7 +13,7 @@ import Add from './forms/Add';
 import Settings from './settings/Settings';
 import Register from './users/Register';
 import Login from './users/Login';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Footer from './main/Footer.js';
 import Quote from './others/Quote';
 import { useAuthContext } from '../context/ContextProvider';
@@ -23,6 +23,7 @@ import Draft from './forms/Draft';
 // import {Switch} from 'react-router-dom'
 
 const App = () => {
+    const location = useLocation()
     const { token, user } = useAuthContext()
     const navRef = useRef()
     // const btnRef=useRef()
@@ -51,7 +52,7 @@ const App = () => {
         <div className='h-sceen'>
 
 
-            <div className='sticky w-full top-0 z-10'><Navbar /> </div>
+           {location.pathname === '/quotes'? '':  <div className='sticky w-full top-0 z-10'><Navbar /> </div>}
             <div className='h-[40rem] overflow-auto'>
                 <Routes className="z-0">
                     <Route path='/' element={<Home />} />
@@ -59,7 +60,7 @@ const App = () => {
                     <Route path='/edit' element={<EditPost />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/contact' element={<Contact />} />
-                    <Route path='/add/article' element={user.email !='mainanorbert@gmail.com' ? <Contact /> : <Add />} />
+                    <Route path='/add/article' element={user.email ='mainanorbert@gmail.com' ? <Add /> : <Contact />} />
                     <Route path='/register' element={token ? <Home /> : <Register />} />
                     <Route path='/login' element={token ? <Home /> : <Login />} />
                     <Route path='/articles' element={<Post />} />
