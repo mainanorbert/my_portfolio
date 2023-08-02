@@ -70,11 +70,11 @@ const Quote = () => {
           <div className='bg-gree-500 flex justify-evenly'>
             <div className='text-2xl rounded-full col-span-4  text-center ml-8 font-bold text-yellow-300'>Todays' Quote</div>
             <div>
-              <Link to="/" className='text-white' title='Go Home'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-12 h-10">
+              <Link to="/" className='text-white flex justify-center ' title='Go Home'>
+              <div className='animate-bounce'><svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-12 h-10">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-            </svg>
-            
+            </svg></div>
+            <span>Go Home</span>
               </Link>
             </div>
 
@@ -93,7 +93,7 @@ const Quote = () => {
           </di>
           <div>
             <div className='text-white font-bold text-2xl text-center'><Link to='/https://www.w3schools.com/' target={'_blank'}>Get Started Today to Learn your </Link></div>
-            <div className='text-neutral-400 px-4 font-bold'>Visit <Link className='text-blue-500 underline' to='/https://www.w3schools.com/' target={"_blank"}>@w3schools</Link> to Learn the basics of Web Development and Hence Kick Start Your Journey Now. You can Learn:</div>
+            <div className='text-neutral-400 px-4 font-bold'>Visit <Link className='text-blue-500 underline' to='/https://www.w3schools.com/' target={'_blank'}>@w3schools</Link> to Learn the basics of Web Development and Hence Kick Start Your Journey Now. You can Learn:</div>
             <ol className='text-neutral-300 px-[6rem] list-disc'>
               <li>Web Development</li>
               <li>Software Engineering</li>

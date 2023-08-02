@@ -5,7 +5,7 @@ import { faFacebook, faTwitter, faInstagram, faWhatsapp } from '@fortawesome/fre
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import passport from '../images/passport.jpg'
 import Display from '../pages/Display';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { FaBars, FaHandHolding, FaTimes } from 'react-icons/fa';
 import { useAuthContext } from '../../context/ContextProvider';
@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const [hideNav, setHideNav] = useState(false)
   const [email, setEmail] = useState('')
-  
+const navigate = useNavigate()  
 
   const handleClick = () => {
     setHideNav(!hideNav);
@@ -44,12 +44,17 @@ const Navbar = () => {
     // navOp.current.classList.toggle('animate-pulse')
     // navRef.current.classList.toggle('op')
 
-    setIsOpen(!isOpen)
+    setIsOpen(true)
   }
   // const user = false
 
   const [activeLink, setActiveLink] = useState(null)
   const location = useLocation();
+
+  useEffect(()=>{
+    navRef.current.classList.toggle('hidden')
+    setIsOpen(false);
+  }, [location.pathname])
   useEffect(() => {
     setActiveLink(location.pathname)
   }, [location]);
@@ -59,6 +64,7 @@ const Navbar = () => {
         .then(({ data }) => {
           setEmail(data.email)
           setUserId(data.id)
+          setUser(data)
         })
         .catch((error) => {
           console.log(error);
@@ -72,8 +78,9 @@ const Navbar = () => {
       .then((response) => {
         myToken(null)
         setUser(null)
-        console.log('token', token) 
         localStorage.removeItem('ACCESS_TOKEN')
+        navigate('/articles')
+       
       })
       .catch((error) => {
         console.log(error)
@@ -82,11 +89,12 @@ const Navbar = () => {
   
   return (
     <div className='w-full md:text-center relative bg-red-800 '>
-      <button onClick={showNav} className='absolute md:top-2 md:hidden p- text-white font-extrabold text-3xl left-4'>{!isOpen ? <FaBars /> : <FaTimes />}</button>
+      <button onClick={showNav} className='absolute md:top-2 md:hidden p- text-white font-extrabold text-3xl left-4'> <FaBars /> </button>
 
       <nav className='md:flex block gap-2  items-center text-neutral-400 font-bold justify-between  bg-slate-800 '>
-        <div className=' pl-[4rem] md:pl-0'>
+        <div className=' pl-[4rem] md:pl-0 flex justify-between'>
           <Link to='/' className=' md:text-left text-cente md:text-xl   p-3 text-yellow-500 text-2xl pl-2'>NoberTechx</Link>
+          <div className='p-2'><img className="md:w-20 w-10 md:hidden block rounded-full" src={passport} alt="My Image" /></div>
         </div>
         <div ref={navRef} className='md:flex translate-y-0 p-3 transition-transform hidden md:opacity-100 opacity-0.2  duration-1000  gap-2 items-center text-neutral-400 font-bold justify-between  bg-slate-800'>
           <div className='basis-1/3 w-full md:flex gap-3 grid place-items-start justify-between hover:text-neutral-200 hover:underline px-2 text-center'>
@@ -122,15 +130,18 @@ const Navbar = () => {
             </div>) :
 
               (<div className=' relative bg-green-' onMouseEnter={handleClick} onMouseLeave={() => { setHideNav(false) }}>
-                <img className="md:w-20 w-20 rounded-full" src={passport} alt="My Image" />
-
+               {email === 'mainanorbert@gmail.com'?
+               <img className="md:w-20 w-20 rounded-full" src={passport} alt="My Image" />
+               : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+               <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+             </svg>
+              }
                 {hideNav ? (
                   <div
-                    className='hover:bg-white h-[9rem] flex justify-center l-4  w-[9rem] left-[-3.5rem] text-blue-500 rounded  absolute'>
+                    className='hover:bg-white md:w-[10rem] flex justify-center l-4   md:left-[-3.5rem] left-[-rem] text-blue-500 rounded  absolute'>
                     <div className=' text-xs space-y-4 font-bold p-2 border place-items-center w-full'>
-                      <div className='font-bold text-sm text-slate-500 underline '>{email}</div>
-                      <div> <Link className='hover:bg-slate-200 p-2 roundedp-2 rounded hover:text-blue-800 ' to="/settings">Settings</Link></div>
-                      <div><Link className='hover:bg-slate-200 p-2 rounded hover:text-blue-800' to="/">Profile</Link></div>
+                      <div className='font-bold  underline break-words hover:text-blue-800'>{email}</div>
+                      <div><Link className='hover:bg-slate-200 p-2 rounded hover:text-blue-800' to="/profile">Profile</Link></div>
                       <div><button onClick={handleMyLogout}  className='hover:bg-slate-200 p-2 rounded hover:text-blue-800' to="/">Logout</button></div>
 
                     </div>

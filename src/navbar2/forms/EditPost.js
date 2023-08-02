@@ -28,7 +28,7 @@ const Add = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (payload.title === '' || payload.article === '' || payload.category) {
+        if (payload.title === '' || payload.article === '' || payload.category === '') {
             setError('Fill all fields. Cannot Submit empty fields')
             setIsError(true)
 
@@ -75,10 +75,10 @@ const Add = () => {
 
     return (
         <div className='flex gap-7  bg-slate-300'>
-            <div className='w-4/12 md:block hidden bg-slate-300 overflow-auto'> <Sidebar /></div>
-            <div className='w-full h-scre bg-slate-400 p-3'>
+            <di v className='w-4/12 md:block hidden bg-slate-300 overflow-auto'> <Sidebar /></di>
+            <div className='w-full h-scre bg-slate-300 p-3'>
                 <p className='text-center md:text-2xl font-extrabold text-neutral-600'>Publish New Article</p>
-                <form className='  place-items-center relative bg-green-400 p-4' onSubmit={handleSubmit}>
+                <form className='  place-items-center relative  p-4' onSubmit={handleSubmit}>
                     {isError && (<motion.div
                         animate={{
                             scale: [1, 2, 2, 1, 1],
@@ -86,21 +86,21 @@ const Add = () => {
                             borderRadius: ["20%", "20%", "50%", "50%", "20%"],
                         }}
                         className='absolute bg-red-600 p-1 w-6/12 rounded text-center text-white'>{error}</motion.div>)}
-                    <div className='w-10/12'>
+                    <div className='md:w-10/12 '>
                         <div className='justify-center items-center px-8 space--1'>
                             <div className='flex justify-between'>
-                                <label className='text-2xl font-semibold text-neutral-300'>Title</label>
-                                <label className='text-neutral-300 font-bold'>Choose Category</label>
+                                <label className='md:text-2xl font-semibold text-green-600'>Title</label>
+                                <label className='text-green-600 font-bold'>Choose Category</label>
                             </div>
                             <div className='flex space-x-1'>
                                 <input
                                     name='title'
                                     value={payload.title}
                                     onChange={handleInputChange}
-                                    className='w-full bg-slate-200 border focus:outline-none focus:border-none font-bold h-10 rounded-xl px-2' name='title' placeholder='Title...' type="text" />
+                                    className='w-full bg-slate-200 border focus:outline-none focus:border-none font-bold md:h-10 h-6  rounded-xl px-2' name='title' placeholder='Title...' type="text" />
 
                                 <select defaultValue={payload.category} onChange={handleInputChange} name='category'
-                                    className='focus:outline-none rounded-xl w-4/12'
+                                    className='focus:outline-none rounded-xl md:w-4/12 6/12'
                                 >
                                     <option value="">Select Category</option>
                                     <option value="Artificial Intelligence" >Artificial Intelligence</option>

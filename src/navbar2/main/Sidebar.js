@@ -89,10 +89,10 @@ const Sidebar = () => {
       <div className='w-ful justify-between bg-green-00 z-0 h-screen mt-1 md:px-2 md:flex '>
         <div className={`${location.pathname === '/articles' ? 'md:w-4/12 overflow-y-auto bg-slate-300' : 'bg-slate-300'}`} >
           <p className='text-center md:text-2xl text-xl font-bold'>Tech Trending</p>
-          <div className='justify-center bg-transparent rounded flex text-sm space-x-1'>
-            <div>Select Categories</div>
+          <div className='justify-center bg-transparen w-full rounded flex text-sm space-x-1'>
+            <div className='text-xs'>Category</div>
             <select
-              className='text-center'
+              className='text-center w-full h-6'
               value={filter} onChange={handleOptionChange} name='filter'
             >
               <option value='All' >All Categories</option>

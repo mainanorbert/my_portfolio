@@ -14,18 +14,18 @@ const Contact = () => {
 
       <div className='md:w-8/12 bg-slate-300 m-2 ml-1 relative'>   
 
-        <form className=' w-full grid  p-2 '>
+        <form className=' md:w-full grid  p-2'>
 
-        <p className='text-left pl-[3rem] text-green-600 font-bold text-2xl'>Contact Form</p>
+        <p className='text-left pl-[3rem] text-green-600 font-bold text-2xl'>Contact Us to Publish Your Article</p>
 
 
 
             <div className=''>
-              <input  placeholder='Subject if your issue' className='w-8/12 bg-white p-1 border rounded' type="text" />
+              <input  placeholder='Subject if your issue' className='md:w-8/12 w-full bg-white p-1 border rounded' type="text" />
             </div>
 
             <div className='mt-1 '>
-              <textarea className=' bg-white w-8/12 rounded border p-1' placeholder='Describe your issue....' 
+              <textarea className=' bg-white md:w-8/12 w-full rounded border p-1' placeholder='Describe your issue....' 
                cols="30" rows="10"></textarea>
             </div>
 
@@ -36,7 +36,7 @@ const Contact = () => {
         
         </form>
 
-        <a href="#footer" className='absolute top-4 right-6 justify-center border '>
+        <a href="#footer" className='absolute md:block  hidden top-4 right-6 justify-center border '>
         <div className='font-extrabold text-green-500'>More Contacts <span><i class="fas fa-down"></i></span></div>
         <p className='text-center flex animate-bounce  text-green-600 mt-4 justify-center'>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-10 h-10">

@@ -45,10 +45,10 @@ const Footer = () => {
             <div  className='bg-gree-500'>
                 <div className=' font-bold md:text-neutral-400 hover:text-white text-neutral-200 underline'>Follow us: Social media</div>
                 <div className='flex space-x-6 hover:text-blue-600'>
-                    <div><Link to="https://web.facebook.com/?_rdc=1&_rdr" target={'_blank'}  ><FontAwesomeIcon className='md:h-10 text-blue-500' icon={faFacebook} /></Link></div>
-                    <div><Link to="https://www.instagram.com/" target={'_blank'}  ><FontAwesomeIcon className='md:h-10 text-slate-400' icon={faInstagram} /></Link></div>
-                    <div><Link to="https://web.whatsapp.com/" target={'_blank'} ><FontAwesomeIcon className='md:h-10  text-green-500' icon={faWhatsapp} /></Link></div>
-                    <div><Link to="https://twitter.com/mainanorbert2" target={'_blank'} ><FontAwesomeIcon className='md:h-10  text-blue-500' icon={faTwitter} /></Link></div>
+                    <div><Link to="https://web.facebook.com/?_rdc=1&_rdr" target={'_blank'}  ><FontAwesomeIcon className='md:h-5 text-blue-500' icon={faFacebook} /></Link></div>
+                    <div><Link to="https://www.instagram.com/" target={'_blank'}  ><FontAwesomeIcon className='md:h-5 text-slate-400' icon={faInstagram} /></Link></div>
+                    <div><Link to="https://web.whatsapp.com/" target={'_blank'} ><FontAwesomeIcon className='md:h-5  text-green-500' icon={faWhatsapp} /></Link></div>
+                    <div><Link to="https://twitter.com/mainanorbert2" target={'_blank'} ><FontAwesomeIcon className='md:h-5  text-blue-500' icon={faTwitter} /></Link></div>
 
 
                 </div>

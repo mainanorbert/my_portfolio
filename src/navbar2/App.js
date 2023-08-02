@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { FaTimes, FaBars } from 'react-icons/fa';
 import Post from './posts/Post';
 import Add from './forms/Add';
-import Settings from './settings/Settings';
+import Profile from './profiles/Profile';
 import Register from './users/Register';
 import Login from './users/Login';
 import { Route, Routes, useLocation } from 'react-router-dom';
@@ -49,7 +49,7 @@ const App = () => {
 
     return (
 
-        <div className='h-sceen'>
+        <div className='h-sceen bg-slate-300'>
 
 
            {location.pathname === '/quotes'? '':  <div className='sticky w-full top-0 z-10'><Navbar /> </div>}
@@ -59,12 +59,12 @@ const App = () => {
                     <Route path='/articles' element={<Sidebar />} />
                     <Route path='/edit' element={<EditPost />} />
                     <Route path='/about' element={<About />} />
-                    <Route path='/contact' element={<Contact />} />
-                    <Route path='/add/article' element={user.email ='mainanorbert@gmail.com' ? <Add /> : <Contact />} />
+                    <Route path='/contact' element={token?<Contact />: <Login/>} />
+                    <Route path='/add/article' element={user.email =='mainanorbert@gmail.com' ? <Add/>: <Contact />} />
                     <Route path='/register' element={token ? <Home /> : <Register />} />
                     <Route path='/login' element={token ? <Home /> : <Login />} />
                     <Route path='/articles' element={<Post />} />
-                    <Route path='/settings' element={<Settings />} />
+                    <Route path='/profile' element={<Profile />} />
                     <Route path='/post' element={<Post />} />
                     <Route path='/quotes' element={<Quote />}></Route>
                     <Route path='/draft' element={<Draft />}></Route>

@@ -82,29 +82,29 @@ const Add = () => {
             <div className='w-4/12 md:block hidden bg-slate-300 overflow-auto'> <Sidebar /></div>
             <div className='w-full h-scre bg-slate-400 p-3'>
                 <p className='text-center md:text-2xl font-extrabold text-neutral-600'>Publish New Article</p>
-                <form className='  place-items-center relative bg-green-400 p-4' onSubmit={handleSubmit}>
+                <form className='  place-items-center relativ md:p-4' onSubmit={handleSubmit}>
                     {isError && (<motion.div
                         animate={{
                             scale: [1, 2, 2, 1, 1],
                             rotate: [0, 0, 270, 270, 0],
                             borderRadius: ["20%", "20%", "50%", "50%", "20%"],
                         }}
-                        className='absolute bg-red-600 p-1 w-6/12 rounded text-center text-white'>{error}</motion.div>)}
-                    <div className='w-10/12'>
+                        className='absolute bg-red-600 p-1 md:w-6/12 w-11/12 rounded text-center text-white'>{error}</motion.div>)}
+                    <div className='md:w-10/12'>
                         <div className='justify-center items-center px-8 space--1'>
                             <div className='flex justify-between'>
-                                <label className='text-2xl font-semibold text-neutral-300'>Title</label>
-                                <label className='text-neutral-300 font-bold'>Choose Category</label>
+                                <label className='md:text-2xl font-semibold text-neutral-300'>Title</label>
+                                <label className='md:text-2xl text-sm text-neutral-300 font-bold'>Choose Category</label>
                             </div>
-                            <div className='flex space-x-1'>
+                            <div className='flex space-x-1 '>
                                 <input
                                     name='title'
                                     value={payload.title}
                                     onChange={handleInputChange}
-                                    className='w-full bg-slate-200 border focus:outline-none focus:border-none font-bold h-10 rounded-xl px-2' name='title' placeholder='Title...' type="text" />
+                                    className='w-7/12 bg-slate-200 border focus:outline-none focus:border-none font-bold md:h-10 rounded-xl px-2' name='title' placeholder='Title...' type="text" />
 
                                 <select defaultValue={payload.category} onChange={handleInputChange} name='category'
-                                    className='focus:outline-none rounded-xl w-4/12'
+                                    className='focus:outline-none rounded-xl md:3/12 w-4/12 md:text-sm text-xs'
                                 >
                                     <option value="">Select Category</option>
                                     <option value="Artificial Intelligence" >Artificial Intelligence</option>
@@ -124,7 +124,7 @@ const Add = () => {
                         </div>
 
                         <div className='px-8 mt-2'>
-                            <textarea className='w-full p-2 border W rounded bg-slate-200 '
+                            <textarea className='w-full focus:outline-none p-2 border W rounded bg-slate-200 '
                                 name='article'
                                 value={payload.article}
                                 onChange={handleInputChange}

@@ -6,13 +6,11 @@ import Categories from '../pages/Categories'
 
 const Home = () => {
   return (
-    <div className='md:flex md:gap-0 gap-0.5 z- h-scre'>
-      <div className='w-5/12 md:block hidden overflow-y-auto h'><Sidebar /></div>
-      <div className='w-full bg-green bg-slate-100 md:ml-2 z-0'><Display /></div>
-      <div className='md:w-4/12 w-full md:hidden text-sm z-0 overflow-y-auto'><Sidebar /></div>
-      <div className='md:w-3/12  z-0 pt-[2rem] pl-4'>
-        <Categories />
-      </div>
+    <div className='md:flex block md:gap-0 overflow-y-auto '>
+      <div className='w-4/12 md:block hidden h'><Sidebar /></div>
+      <div className='w-full bg-green bg-slate-300 md:ml-2'><Display /></div>
+      <div className='mb-0  mt-5 p-4 md:p-0  md:w-3/12'> <Categories/></div>
+      <div className=' md:hidden text-sm mt-8 hidden '><Sidebar /></div>
 
 
 

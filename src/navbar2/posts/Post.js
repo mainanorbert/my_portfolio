@@ -4,7 +4,7 @@ import axiosClient from '../../axios/AxiosClient'
 import { Link } from 'react-router-dom'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../context/ContextProvider'
-
+import '../../mycss.css'
 
 const Post = ({ post, author }) => {
     const location = useLocation()
@@ -75,8 +75,10 @@ const Post = ({ post, author }) => {
                 <div className='bg-green-500 hover:bg-green-600 cursor-pointer hover:text-neutral-300 text-xs rounded p-1  inline-block'>
                     <i className='text-sm'>Created on:</i> {postCreated} | <span>Category:{post.category}</span> | <i className='underline '>Author:</i> {author} </div>
             </div>
-            <div className=' max-w-10xl bg-blue-500'>
-                <pre><p className='p-1 bg-green-700 '>{post.article}</p></pre>
+            <div className=' max-w text-contain text-container'>
+                <pre className=' rounded-xl text-container'>
+                    <p className='p-2 b-green-700 '>{post.article}</p>
+                </pre>
             </div>
 
             <div className='flex justify-end space-x-2'>
