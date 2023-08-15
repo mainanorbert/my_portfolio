@@ -7,33 +7,65 @@ import { faFacebook, faTwitter, faInstagram, faWhatsapp, faIma } from '@fortawes
 import { useAuthContext } from '../../context/ContextProvider'
 import tech from '../images/tech.gif'
 import axiosClient from '../../axios/AxiosClient';
+import { useParams } from 'react-router-dom';
+
 
 const Add = () => {
     const { userId, editPost } = useAuthContext()
     const [files, setFiles] = useState(0)
-    const [payload, setPayload] = useState({
-        title: editPost.data.title,
-        article: editPost.data.article,
-        post_id: editPost.data.id,
-        category:editPost.data.category,
-        user_id: userId
-    })
     const [error, setError] = useState('')
     const [isError, setIsError] = useState(false)
+    const {postId} = useParams()
+    const [post, setPost] = useState([])
+    const [payload, setPayload] = useState({
+        title: '',
+        article: '',
+        category: '',
+        user_id:'',
+        post_id: postId
+    })
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+       
+        setPayload((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
 
+    const fetchArticles = async () => {
+        try {
+          const response = await axiosClient.get(`articles/${postId}`);         
+          setPost(response.data)
+          console.log(response.data);
+          setPayload({
+            title: response.data.title,
+            article: response.data.article,
+            category: response.data.category,
+            user_id:response.data.user_id,
+            post_id: postId
+        });
+        
+     
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      useEffect(()=>{
+        fetchArticles();
+      }, [])
+      
+    
     const handleChange = (e) => {
 
         setFiles(e.target.files.length);
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-
         if (payload.title === '' || payload.article === '' || payload.category === '') {
             setError('Fill all fields. Cannot Submit empty fields')
             setIsError(true)
-
         }
-
         console.log('edit', payload)
         axiosClient.post('edit/article/', payload)
             .then((response) => {
@@ -44,8 +76,7 @@ const Add = () => {
                     title: '',
                     article: '',
                     category:'',
-                    post_id: editPost.data.id,
-                    user_id: userId
+                    post_id: postId,
                 });
 
             })
@@ -63,20 +94,12 @@ const Add = () => {
             return () => clearInterval(timer)
         }
     }, [isError])
-
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setPayload((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    };
-    console.log('eed', editPost.data.id)
-
+  
     return (
         <div className='flex gap-7  bg-slate-300'>
             <di v className='w-4/12 md:block hidden bg-slate-300 overflow-auto'> <Sidebar /></di>
             <div className='w-full h-scre bg-slate-300 p-3'>
+           
                 <p className='text-center md:text-2xl font-extrabold text-neutral-600'>Publish New Article</p>
                 <form className='  place-items-center relative  p-4' onSubmit={handleSubmit}>
                     {isError && (<motion.div
@@ -99,9 +122,8 @@ const Add = () => {
                                     onChange={handleInputChange}
                                     className='w-full bg-slate-200 border focus:outline-none focus:border-none font-bold md:h-10 h-6  rounded-xl px-2' name='title' placeholder='Title...' type="text" />
 
-                                <select defaultValue={payload.category} onChange={handleInputChange} name='category'
-                                    className='focus:outline-none rounded-xl md:w-4/12 6/12'
-                                >
+                                <select value={payload.category} onChange={handleInputChange}  name='category'  
+                                    className='focus:outline-none rounded-xl md:w-4/12 6/12'>
                                     <option value="">Select Category</option>
                                     <option value="Artificial Intelligence" >Artificial Intelligence</option>
                                     <option value="Web Development">Web Development</option>
@@ -122,6 +144,7 @@ const Add = () => {
                         <div className='px-8 mt-2'>
                             <textarea className='w-full p-2 border W rounded bg-slate-200 '
                                 name='article'
+                               
                                 value={payload.article}
                                 onChange={handleInputChange}
                                 type="text" cols="10" rows="15" placeholder='Type Your Article Here...'></textarea>

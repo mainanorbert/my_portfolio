@@ -6,7 +6,8 @@ const AuthContext = createContext({
     toke:null,
     userId:null,
     mypost:null,
-    editPost:null
+    editPost:null,
+    post:null
 });
 
 
@@ -17,7 +18,8 @@ export const AuthProvider = ({children})=>{
     const[mypost, setPosts]=useState(null);
     const [userId, setUserId]=useState();
     const [token, setToken]=useState(localStorage.getItem('ACCESS_TOKEN'));
-    const [editPost, setEditPost]=useState()
+    const [editPost, setEditPost]=useState();
+    const [post, setPost] = useState({});
 
     
 const myToken =(token)=>{
@@ -30,7 +32,7 @@ const myToken =(token)=>{
 }
 
     return (
-        <AuthContext.Provider value={{user, token, setUser, myToken, setPosts, mypost, setUserId, userId, editPost, setEditPost}}>
+        <AuthContext.Provider value={{user, token, post, setPost, setUser, myToken, setPosts, mypost, setUserId, userId, editPost, setEditPost}}>
         {children}
         </AuthContext.Provider>
     )

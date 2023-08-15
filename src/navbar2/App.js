@@ -20,6 +20,7 @@ import { useAuthContext } from '../context/ContextProvider';
 import Sidebar from './main/Sidebar';
 import EditPost from './forms/EditPost';
 import Draft from './forms/Draft';
+import PostPage from './pages/PostPage';
 // import {Switch} from 'react-router-dom'
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
 
     // const user = false
 
+    
 
     return (
 
@@ -57,19 +59,17 @@ const App = () => {
                 <Routes className="z-0">
                     <Route path='/' element={<Home />} />
                     <Route path='/articles' element={<Sidebar />} />
-                    <Route path='/edit' element={<EditPost />} />
+                    <Route path='/edit/:postId' element={<EditPost />} />
                     <Route path='/about' element={<About />} />
-                    <Route path='/contact' element={token?<Contact />: <Login/>} />
-                    <Route path='/add/article' element={user.email =='mainanorbert@gmail.com' ? <Add/>: <Contact />} />
+                    <Route path='/contact' element={token?<Contact />:<Login/>} />
+                    <Route path='/add/article' element={user.email ==='mainanorbert@gmail.com' ? <Add/>: <Contact />} />
                     <Route path='/register' element={token ? <Home /> : <Register />} />
                     <Route path='/login' element={token ? <Home /> : <Login />} />
-                    <Route path='/articles' element={<Post />} />
+                    <Route path="/articles/:postId" element={<PostPage />} />
                     <Route path='/profile' element={<Profile />} />
-                    <Route path='/post' element={<Post />} />
                     <Route path='/quotes' element={<Quote />}></Route>
                     <Route path='/draft' element={<Draft />}></Route>
                 </Routes>
-
             </div>
             <div className='bottom-0 fixe w-full'>
                 <Footer />

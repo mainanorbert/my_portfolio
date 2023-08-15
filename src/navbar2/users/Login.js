@@ -30,6 +30,7 @@ const Login = () => {
         email: email,
         password: password
       }
+      
       axiosClient.post('/login', payload)
         .then(({ data }) => {
           myToken(data.token)

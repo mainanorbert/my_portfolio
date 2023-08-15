@@ -20,7 +20,6 @@ const Navbar = () => {
 
   const [optionSelect, setOptionSelect] = useState('');
 
-  const [isOpen, setIsOpen] = useState(false);
 
   const [hideNav, setHideNav] = useState(false)
   const [email, setEmail] = useState('')
@@ -44,7 +43,6 @@ const navigate = useNavigate()
     // navOp.current.classList.toggle('animate-pulse')
     // navRef.current.classList.toggle('op')
 
-    setIsOpen(true)
   }
   // const user = false
 
@@ -52,8 +50,7 @@ const navigate = useNavigate()
   const location = useLocation();
 
   useEffect(()=>{
-    navRef.current.classList.toggle('hidden')
-    setIsOpen(false);
+    navRef.current.classList.add('hidden')
   }, [location.pathname])
   useEffect(() => {
     setActiveLink(location.pathname)
@@ -79,7 +76,7 @@ const navigate = useNavigate()
         myToken(null)
         setUser(null)
         localStorage.removeItem('ACCESS_TOKEN')
-        navigate('/articles')
+        navigate('/login')
        
       })
       .catch((error) => {
