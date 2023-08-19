@@ -2,7 +2,6 @@ import React from 'react'
 import images from '../images/images.png'
 import tech from '../images/tech.webp'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import Post from '../posts/Post'
 import { useAuthContext } from '../../context/ContextProvider'
 import axiosClient from '../../axios/AxiosClient'
 import { useState, useEffect } from 'react'
@@ -42,7 +41,13 @@ const Sidebar = () => {
     }
   };
 
- 
+  const calculateDaysAgo = (publishDate) => {
+    const today = new Date();
+    const publishDateTime = new Date(publishDate);
+    const timeDifference = today - publishDateTime;
+    const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    return daysAgo;
+};
 
   return (
     <>
@@ -65,12 +70,14 @@ const Sidebar = () => {
           {articles.map((post) => (
             <div className='border-b'>
               <div id={post.id} className='p-1 text-ce'>
+              <p className=' text-green-700 font-bold'>{post.title}</p>
                 <img className='justify-center' src={images} alt="Tech Image" />
-                <p className=' text-green-700 font-bold'>{post.title}</p>
-                <p>|
-                  {post.article.substring(0, 150)}
+                
+                <span>  <i className='text-xs text-slate-700'>Posted ({calculateDaysAgo(post.created_at)}days ago)</i></span>
+                <p>
+                  {post.article.substring(0, 150)} <span><Link to={`/articles/${post.id}`} className='text-blue-700 px-1'>Read More...</Link></span>
                 </p>
-                <Link to={`/articles/${post.id}`} className='text-blue-700 px-1'>Read More...</Link>
+                
             </div>
 
             </div>

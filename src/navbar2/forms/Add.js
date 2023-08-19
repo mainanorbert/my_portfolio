@@ -24,7 +24,7 @@ const Add = () => {
     })
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-       
+
         setPayload((prevFormData) => ({
             ...prevFormData,
             [name]: value,
@@ -90,21 +90,21 @@ const Add = () => {
                             borderRadius: ["20%", "20%", "50%", "50%", "20%"],
                         }}
                         className='absolute bg-red-600 p-1 md:w-6/12 w-11/12 rounded text-center text-white'>{error}</motion.div>)}
-                    <div className='md:w-10/12'>
-                        <div className='justify-center items-center px-8 space--1'>
-                            <div className='flex justify-between'>
-                                <label className='md:text-2xl font-semibold text-neutral-300'>Title</label>
-                                <label className='md:text-2xl text-sm text-neutral-300 font-bold'>Choose Category</label>
-                            </div>
-                            <div className='flex space-x-1 '>
+
+                    <div className='md:w-full bg-green-00'>
+                        <div className='md:flex justify-between space-x-1 w-full bg-green-00 '>
+                            <div className='md:w-8/12 space-x-1 p-1 md:flex '>
+                                <div><label className='md:text-2xl font-semibold text-neutral-300'>Title</label></div>
                                 <input
                                     name='title'
                                     value={payload.title}
                                     onChange={handleInputChange}
-                                    className='w-7/12 bg-slate-200 border focus:outline-none focus:border-none font-bold md:h-10 rounded-xl px-2' name='title' placeholder='Title...' type="text" />
-
+                                    className='md:w-10/12 bg-slate-200 w-8/12 border focus:outline-none focus:border-none font-bold md:h-8 h-6 rounded-xl px-2' name='title' placeholder='Title...' type="text" />
+                            </div>
+                            <div className='md:flex md:w-6/12 p-1 space-x-1'>
+                                <div><label className='md:text- text-sm text-neutral-300 font-bold'>Category</label></div>
                                 <select defaultValue={payload.category} onChange={handleInputChange} name='category'
-                                    className='focus:outline-none rounded-xl md:3/12 w-4/12 md:text-sm text-xs'
+                                    className='focus:outline-none bg-slate-200 rounded-xl md:w-8/12 w-8/12 md:text-sm md:h-8 h-6'
                                 >
                                     <option value="">Select Category</option>
                                     <option value="Artificial Intelligence" >Artificial Intelligence</option>
@@ -114,17 +114,22 @@ const Add = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className='hidden'>
-                            <label htmlFor='image' className='ml-2 text-4xl cursor-pointer text-blue-700' title='Upload FrontLine Image'>
-                                <i class="fas fa-upload" ></i>
-                                <i class="fas fa-image"></i>
+                        <div className=' flex'>
+                            <label htmlFor='image' className='ml-2 text-4x cursor-pointer text-blue-800' title='Upload FrontLine Image'>
+                                <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                </svg>
+
+                                </div>
+                                <input type="file" id='image' name='image' className='hidden' onChange={handleChange} />
+                                <span className='text-sm text-green-400'>({files})photo</span>
                             </label>
-                            <span className='text-xs text-neutral-400'>({files})photo</span>
-                            <input type="file" id='image' name='image' className='hidden' onChange={handleChange} />
+
                         </div>
 
-                        <div className='px-8 mt-2'>
-                            <textarea className='w-full focus:outline-none p-2 border W rounded bg-slate-200 '
+                        <div className='md:px-4 mt-2'>
+                            <textarea className='md:w-11/12 w-full focus:outline-none p-2 border W rounded bg-slate-200 '
                                 name='article'
                                 value={payload.article}
                                 onChange={handleInputChange}

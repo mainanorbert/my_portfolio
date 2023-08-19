@@ -33,8 +33,8 @@ const Quote = () => {
 
         <motion.div
 
-          initial={{ x: '-100%' }}
-          animate={{ x: '100%' }}
+          initial={{ x: '100%' }}
+          animate={{ x: '-100%' }}
           transition={{ duration: 5, repeat: Infinity }}
 
           className='text-center font-bold text-white md:text-3xl w-full'>
@@ -92,8 +92,8 @@ const Quote = () => {
             </div>
           </di>
           <div>
-            <div className='text-white font-bold text-2xl text-center'><Link to='/https://www.w3schools.com/' target={'_blank'}>Get Started Today to Learn your </Link></div>
-            <div className='text-neutral-400 px-4 font-bold'>Visit <Link className='text-blue-500 underline' to='/https://www.w3schools.com/' target={'_blank'}>@w3schools</Link> to Learn the basics of Web Development and Hence Kick Start Your Journey Now. You can Learn:</div>
+            <div className='text-white font-bold text-2xl text-center'><Link to='https://www.w3schools.com/' target={'_blank'}>Get Started Today to Learn your </Link></div>
+            <div className='text-neutral-400 px-4 font-bold'>Visit <Link to="https://www.w3schools.com/" target={'_blank'}  className='text-blue-500 underline'>@w3schools</Link> to Learn the basics of Web Development and Hence Kick Start Your Journey Now. You can Learn:</div>
             <ol className='text-neutral-300 px-[6rem] list-disc'>
               <li>Web Development</li>
               <li>Software Engineering</li>

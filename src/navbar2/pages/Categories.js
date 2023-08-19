@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 const Categories = () => {
     return (
 
-        <div className='text-cent pt-4 p-1'>
-            <div className=' text-center bg-green-500 p-1 hover:bg-green-600 my-8 hover:text-white rounded-full'>
-                <Link to='/quotes' className=' md:text-left font-bold w-8/12 text-xl text-center text-white'>Get Inspired with Today's Quote</Link>
+        <div className='text-cent p-1'>
+            <div className=' text-center bg-green-500 p-1 hover:bg-green-600 hover:text-white rounded-full'>
+                <Link to='/quotes' className=' md:text-left font-bold text-lg text-center text-white'>Inspiration and Resources</Link>
             </div>
 
            <div className='bg-blue-00 w-full'>

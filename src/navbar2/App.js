@@ -8,7 +8,6 @@ import Contact from './main/Contact';
 import Button from './Button';
 import { useState } from 'react';
 import { FaTimes, FaBars } from 'react-icons/fa';
-import Post from './posts/Post';
 import Add from './forms/Add';
 import Profile from './profiles/Profile';
 import Register from './users/Register';
